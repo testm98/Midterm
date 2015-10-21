@@ -34,7 +34,7 @@ String author=  "Your Name";
 
 float left=50, right=450, top=100, bottom=250;        // Table boundaries
 float middle=250;
-boolean wall=true, all=true;
+boolean wall=true, all=false, rat=false;;
 
 int tableRed=150, tableGreen=250, tableBlue=150;      // green pool table
 int score=0,m=0,k=0;
@@ -172,8 +172,8 @@ void blink() {
   
 
   //// Mouse code ////
-  if (keyPressed && key == 'k') { all= !all; }
-  if (keyPressed && key == 'm') { 
+  if (keyPressed && key == 'a') { all= !all; }
+  if (rat || keyPressed && key == 'm') { 
     mx += 5;
     if (mx>width+100) mx=0;    
     rat( mx );
@@ -184,6 +184,8 @@ void blink() {
 
 
   k++;
+  if (k>600) { rat=  k%600 <200; }
+  if (k>300) { all=true; }
   if (k>900 && key == '0') { k=0; }
   int n=k/180;
   if (k<9000) { 
@@ -191,7 +193,7 @@ void blink() {
   }
   if (k%180 == 0) {
          // Random positions, score, etc.
-         if (k>900) {
+         if (k>300) {
            wall = !wall;
            background(0);
          }
@@ -207,6 +209,7 @@ void blink() {
 void demo() {
   //// Display text in "demo" mode.  ++++  Student should remove all of this code!
   if (k%180 > 90  || all) {
+    fill(255,0,0);
     /* REMOVE THIS LINE */        text(score +  " collisons", 400,20 );
     //
     // Buttons. //
