@@ -1,22 +1,5 @@
 //// Midterm code for 59CST112
 
-/**************************************************************
-BE SURE TO CHANGE THE NEXT SEVERAL LINES, USING YOUR REAL NAME.
-
-    MY FIRST NAME IS......William
-    MY MIDDLE NAME IS.....Henry
-    MY LAST NAME IS.......Harrison
-    
-PICK 3 WORDS THAT START WITH YOUR INITIALS, using lower case letters:
-
-    first word............wolf
-    second word...........hamburger
-    third word............hippopotamus
-    
-USE THESE 3 WORDS TO NAME ALL VARIABLES FOR 3 POOL BALLS.
-(You may abbreviate any words, but start with same letter.)
-***************************************************************/
-
 
 //// GLOBALS FOR 3 colored balls ////
 //// (Assume ball diameter is 30.) ////
@@ -44,32 +27,16 @@ int score=0,m=0,k=0;
 
 //// SETUP:  size and table
 void setup() {
-    size( 900, 603 );          //++++ CHANGE THE SIZE -- see instructions! ++++
+    size( 900, 600 );          //++++ CHANGE THE SIZE -- see instructions! ++++
   
     //// MODIFY THIS CODE TO MAKE TABLE CENTERED IN WINDOW.  ++++
 
-    // Table boundaries
-    left=50;
-    right=450;
-    top=100;
-    bottom=250;
-    middle=250;
  }
 
 
 //// NEXT FRAME:  table, bounce off walls, collisions, show all
 void draw() {
   help();
-/*
-  background( 250,250,200 );
-  rectMode( CORNERS );
-  table( left, top, right, bottom );
-  buttons();
-  bounce();
-  collisions();
-  show();
-  messages();
-  */
 }
 
 
@@ -78,78 +45,6 @@ void keyPressed() {
   if (key == 'q') { exit();  }
     //++++ ADD YOUR OWN CODE HERE. ++++
 }
-
-
-//// SCENE:  draw the table with wall down the middle
-void table( float east, float north, float west, float south ) {
-  fill( tableRed, tableGreen, tableBlue );    // pool table
-  strokeWeight(20);
-  stroke( 127, 0, 0 );      // Brown walls
-  rect( east-20, north-20, west+20, south+20 );
-
-            //++++ MODIFY THIS CODE, as necessary. ++++
-
-  // Start with a WALL down the middle of the table! 
-  if (wall) {
-    float middle=  (east+west)/2;    
-    stroke( 0, 127, 0 );
-    line( middle,north+10, middle,south-10 );
-  }
-  stroke(0);
-  strokeWeight(1);
-}
-
-//// ACTION:  bounce off walls, collisions
-void bounce() {
-    //// ADD YOUR OWN CODE HERE. ++++
-}
-void collisions() {
-    //// ADD YOUR OWN CODE HERE. ++++
-}
-
-
-//// SHOW:  balls, messages, etc.
-void show() {
-    //++++ ADD YOUR OWN CODE HERE. ++++
-}
-void buttons() {
-    //++++ ADD YOUR OWN CODE HERE. ++++
-}
-void messages() {
-  fill(0);
-  text( title, width/3, 15 );
-  text( news, width/9, 30 );
-  text( author, 10, height-5 );
-
-  // Also, display the number of collisions.
-
-    //++++ ADD YOUR OWN CODE HERE. ++++
-
-    
-  /* REMOVE THIS LINE */        blink();      /* STUDENT SHOULD REMOVE THIS LINE!!! */
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //+++++++++++++++++  ALL CODE BELOW THIS LINE SHOULD BE REMOVED ++++++++++++++++++++++//
 
 
