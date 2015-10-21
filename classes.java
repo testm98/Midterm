@@ -23,6 +23,28 @@ class Ball {
     else return false;
   }
 }
+
+class Bird {
+  //// PROPERTIES:  position, speed, color, etc. ////   (What a Bird "has".)
+  float x,y, dx,dy;
+  int r,g,b;
+  int number;
+  boolean wingUp=false;
+  
+  //// CONSTRUCTORS (if any). ////
+  
+  //// METHODS:  show, move, detect a "hit", etc. ////  (What a Ball "does".)
+  void show() {
+    fill(r,g,b);
+    triangle( x,y, x-60,y-20, x-60,y+20 );
+    if (wingUp) {
+      triangle( x-20,y, x-40,y-50, x-40,y+50 );
+  }
+  void move() {
+    x=  x+dx;
+    y=  y+dy;
+  }
+}
   
   
   
