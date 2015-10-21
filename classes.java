@@ -1,3 +1,32 @@
+//////// OO version of Balls and Birds
+
+Ball a,b,c;
+Bird p,q,r;
+
+void setup() {
+  size(750, 500 );
+  a=  new Ball();
+  a.dx=3;
+  a.dy=2;
+  //
+  p=  new Bird();
+  p.dx=5;
+  p.y=  50;
+}
+
+void draw() {
+  //// Show ball
+  a.show();
+  a.move();
+  //// Show bird
+  p.show();
+  p.move();
+}
+
+
+
+
+
 //// For object-oriented programming, you will need class definitions like these ////
 
 class Ball {
@@ -39,6 +68,7 @@ class Bird {
     triangle( x,y, x-60,y-20, x-60,y+20 );
     if (wingUp) {
       triangle( x-20,y, x-40,y-50, x-40,y+50 );
+    }
   }
   void move() {
     x=  x+dx;
