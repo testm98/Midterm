@@ -282,7 +282,7 @@ void help() { background( 150,220,220 ); m=1;
   say( "(Your code must work properly for any reasonable window size.)" );
   say( "Change variable names to three words that start with your initials.");
   say("");
-  say( "Add a wall (in the middle) that makes balls remain on right side of table." );
+  say( "Add a WALL (in the middle) that makes balls remain on right side of table." );
   say( "Keys 1, 2, and 3 reset one ball to right half of table (random X,Y,DX,DY)." );
   say( "Add BUTTONS to do the following:" );
   say( "   1. Reset all balls to the right side of table.   ['r']" );
