@@ -1,7 +1,6 @@
 //// For object-oriented programming, you will need class definitions like these ////
 
-class Ball()
-{
+class Ball {
   //// PROPERTIES:  position, speed, color, etc. ////   (What a Ball "has".)
   float x,y, dx,dy;
   int r,g,b;
@@ -23,6 +22,7 @@ class Ball()
     if ( dist( this.x,this.y, other.x,other.y ) < 60 ) return true;
     else return false;
   }
+}
   
   
   
