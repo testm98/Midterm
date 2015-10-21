@@ -27,7 +27,7 @@ int score=0,m=0,k=0;
 
 //// SETUP:  size and table
 void setup() {
-    size( 900, 600 );          //++++ CHANGE THE SIZE -- see instructions! ++++
+    size( 840, 600 );          //++++ CHANGE THE SIZE -- see instructions! ++++
   
     //// MODIFY THIS CODE TO MAKE TABLE CENTERED IN WINDOW.  ++++
 
@@ -201,3 +201,4 @@ void help() { background( 255,255,255 ); m=1;
 
 
 
+            
