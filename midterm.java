@@ -34,7 +34,7 @@ String author=  "Your Name";
 
 float left=50, right=450, top=100, bottom=250;        // Table boundaries
 float middle=250;
-boolean wall=true;
+boolean wall=true, all=true;
 
 int tableRed=150, tableGreen=250, tableBlue=150;      // green pool table
 int score=0,m=0,k=0;
@@ -172,6 +172,7 @@ void blink() {
   
 
   //// Mouse code ////
+  if (keyPressed && key == 'k') { all= !all; }
   if (keyPressed && key == 'm') { 
     mx += 5;
     if (mx>width+100) mx=0;    
@@ -205,9 +206,10 @@ void blink() {
 }
 void demo() {
   //// Display text in "demo" mode.  ++++  Student should remove all of this code!
-  if (k%180 > 90) {
+  if (k%180 > 90  || all) {
     /* REMOVE THIS LINE */        text(score +  " collisons", 400,20 );
     //
+    // Buttons. //
     float bY=40;
     float b0X=10, b1X=110, b2X=210, b3X=310, b4X=410;
     /* REMOVE THIS LINE */        fill(255);  rect(b0X,bY, b0X+80,bY+28); fill(255,0,0);
@@ -216,7 +218,9 @@ void demo() {
     /* REMOVE THIS LINE */        text( "button #1:\nRemove wall.", b1X+2,bY+10 );
     /* REMOVE THIS LINE */        text( "button #2:\nPink table ('p').", b2X+2,bY+10 );
     /* REMOVE THIS LINE */        text( "button #3:\nAnimated mouse ('m').", b3X+2,bY+10 );
-  }else{
+  }
+  if (k%180 <= 90  || all ) {
+    // Display balls. //
     /* REMOVE THIS LINE */        fill(255,0,0);   b( 1, "wolf ball", wolfX,  wolfY );
     /* REMOVE THIS LINE */        fill(150,150,0); b( 2, "ham ball", hamX,  hamY );
     /* REMOVE THIS LINE */        fill(0,100,255);   b( 3, "hippo ball", hippoX,  hippoY );  
@@ -270,7 +274,7 @@ void say(String s){  text(s,10,12*m++); }
 
 
 
-void help() { background( 150,220,220 ); m=1;
+void help() { background( 150,220,220 ); m=1;
   say( "                   I N S T R U C T I O N S" );
   say("");
   say( "All specifications for project 2 shall apply to this MIDTERM ''M1''." );
