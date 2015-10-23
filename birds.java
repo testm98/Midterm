@@ -49,6 +49,10 @@ void scene() {
   background(150,200,250);
   fill( 150,250,150 );
   rect( 0,horizon, width, height-horizon );
+  fill(255,200,0);
+  noStroke();
+  ellipse( frameCount%width, horizon-40-sin( (PI*frameCount/width) % PI )*horizon/2, 40, 40 );
+  stroke(0);
 }
 
 //// Move and show birds
