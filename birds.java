@@ -161,7 +161,7 @@ class Bird {
     fill(r,g,b);
     triangle( x,y, x-60,y-15, x-60,y+15 );
     // Wing
-    wingUp=  frameCount/30 %2 >0;
+    wingUp=  int(frameCount/frameRate) %2 >0;
     fill(255);
     if (wingUp) {
       triangle( x-20,y, x-50,y, x-45,y-50 );
