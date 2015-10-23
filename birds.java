@@ -37,18 +37,22 @@ void reset() {
   c.reset();
 }
 
+//// NEXT FRAME:  scene, birds, balls.
 void draw() {
   scene();
   birds();
   balls();
- }
+}
+
+//// SCENE:  sky & grass.
 void scene() {
   background(150,200,250);
   fill( 150,250,150 );
   rect( 0,horizon, width, height-horizon );
 }
- void birds() {
-  //// Move & show birds
+
+//// Move and show birds
+void birds() {
   hawk.move();
   oriole.move();
   jay.move();
@@ -56,9 +60,9 @@ void scene() {
   hawk.show();
   oriole.show();
   jay.show();
- }
- void balls() {
-  //// Move & show each ball
+}
+//// Move & show each ball
+void balls() {
   a.move();
   b.move();
   c.move();
@@ -75,13 +79,13 @@ void scene() {
 void collision( Ball p, Ball q ) {
   if ( dist( p.x,p.y, q.x,q.y ) <30 ) {
     float tmp;
-    tmp=p.dx;  p.dx=q.dx;  q.dx=tmp;
+    tmp=p.dx;  p.dx=q.dx;  q.dx=tmp;      // Swap the velocities.
     tmp=p.dy;  p.dy=q.dy;  q.dy=tmp;
   }
 }
 
 
-//// HANDLERS
+//// HANDLERS:  keys & clicks.
 void keyPressed() {
   if (key == 'q') exit();
   if (key == 'a') a.reset();
@@ -101,6 +105,8 @@ void mousePressed() {
   if ( a.hit( mouseX,mouseY ) ) {  a.reset(); }
   if ( b.hit( mouseX,mouseY ) ) {  b.reset(); }
   if ( c.hit( mouseX,mouseY ) ) {  c.reset(); }
+  //
+  if ( hawk.hit( mouseX,mouseY ) ) {  hawk.reset(); }
 }
     
 
@@ -165,14 +171,19 @@ class Bird {
   }
   void move() {
     x=  x+dx;
-    if (x>width) {
+    if (x>width) {    reset();  }
+    y=  y+dy;
+    if (x>horizon) {
+      dy=  -dy;             // Bounce up from grass!
+    }
+  }
+  boolean hit( float x, float y ) {
+    if (  dist( x,y, this.x,this.y ) < 30 ) return true;
+    else return false;
+  }
+  void reset() {
       x=0;
       y=  random( 50, horizon-30 );
       dx=  random( 3,10 );
-    }
-    y=  y+dy;
-    if (x>horizon) {
-      dy=  -dy;
-    }
   }
 }
