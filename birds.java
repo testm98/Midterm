@@ -77,7 +77,7 @@ void balls() {
 
 //// Elastic collisions.
 void collision( Ball p, Ball q ) {
-  if ( dist( p.x,p.y, q.x,q.y ) <30 ) {
+  if ( p.hit( q.x,q.y ) ) {
     float tmp;
     tmp=p.dx;  p.dx=q.dx;  q.dx=tmp;      // Swap the velocities.
     tmp=p.dy;  p.dy=q.dy;  q.dy=tmp;
@@ -102,11 +102,13 @@ void keyPressed() {
   }
 }
 void mousePressed() {
+  if ( hawk.hit( mouseX,mouseY ) ) {  hawk.reset(); }
+  if ( oriole.hit( mouseX,mouseY ) ) {  oriole.reset(); }
+  if ( jay.hit( mouseX,mouseY ) ) {  jay.reset(); }
+  //
   if ( a.hit( mouseX,mouseY ) ) {  a.reset(); }
   if ( b.hit( mouseX,mouseY ) ) {  b.reset(); }
   if ( c.hit( mouseX,mouseY ) ) {  c.reset(); }
-  //
-  if ( hawk.hit( mouseX,mouseY ) ) {  hawk.reset(); }
 }
     
 
@@ -161,7 +163,7 @@ class Bird {
     fill(r,g,b);
     triangle( x,y, x-60,y-15, x-60,y+15 );
     // Wing
-    wingUp=  int(frameCount/frameRate) %2 >0;
+    wingUp=  int(frameCount/30) %2 >0;
     fill(255);
     if (wingUp) {
       triangle( x-20,y, x-50,y, x-45,y-50 );
@@ -184,6 +186,6 @@ class Bird {
   void reset() {
       x=0;
       y=  random( 50, horizon-30 );
-      dx=  random( 3,10 );
+      dx=  random( 2,5 );
   }
 }
