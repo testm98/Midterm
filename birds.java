@@ -1,6 +1,6 @@
 //////// Multiple Balls and Birds
 
-Ball a,b,c;
+Ball a,b,c,d,e;
 Bird hawk, oriole, jay;
 
 float horizon;
@@ -113,9 +113,7 @@ void mousePressed() {
     
 
 
-
-//// For object-oriented programming, you will need class definitions like these ////
-
+//// OBJECTS ////
 class Ball {
   //// PROPERTIES:  position, speed, color, etc. ////   (What a Ball "has".)
   float x,y, dx,dy;
@@ -152,6 +150,7 @@ class Ball {
 class Bird {
   //// PROPERTIES:  position, speed, color, etc. ////   (What a Bird "has".)
   float x=0,y=50, dx=5,dy=0.5;
+  float w=60;
   int r,g,b;
   int number;
   boolean wingUp=false;
@@ -161,14 +160,14 @@ class Bird {
   //// METHODS:  show, move, detect a "hit", etc. ////  (What a Ball "does".)
   void show() {
     fill(r,g,b);
-    triangle( x,y, x-60,y-15, x-60,y+15 );
+    triangle( x,y, x-w,y-10, x-w,y+10 );
     // Wing
     wingUp=  int(frameCount/30) %2 >0;
     fill(255);
     if (wingUp) {
-      triangle( x-20,y, x-50,y, x-45,y-50 );
+      triangle( x-w/3,y, x-w*2/3,y, x-w/2,y-40 );
     }else{
-      triangle( x-20,y, x-50,y, x-45,y+50 );
+      triangle( x-w/3,y, x-w*2/3,y, x-w/2,y+40 );
     }
   }
   void move() {
@@ -187,5 +186,7 @@ class Bird {
       x=0;
       y=  random( 50, horizon-30 );
       dx=  random( 2,5 );
+      //
+      
   }
 }
