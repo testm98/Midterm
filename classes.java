@@ -3,8 +3,12 @@
 Ball a,b,c;
 Bird p,q,r;
 
+float horizon;
+
 void setup() {
   size(750, 500 );
+  horizon=  height/4;
+  //
   a=  new Ball();
   a.dx=3;
   a.dy=2;
@@ -15,12 +19,18 @@ void setup() {
 }
 
 void draw() {
+  scene();
   //// Show ball
   a.show();
   a.move();
   //// Show bird
   p.show();
   p.move();
+}
+void scene() {
+  background(150,200,250);
+  fill( 150,250,150 );
+  rect( 0,horizon, width, height-horizon );
 }
 
 
