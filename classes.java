@@ -1,21 +1,23 @@
 //////// OO version of Balls and Birds
 
 Ball a,b,c;
-Bird p,q,r;
+Bird p;
 
 float horizon;
 
 void setup() {
   size(750, 500 );
   horizon=  height/4;
-  //
   a=  new Ball();
-  a.dx=3;
-  a.dy=2;
-  //
   p=  new Bird();
-  p.dx=5;
-  p.y=  50;
+  reset();
+}
+void reset() {
+  a.x=  random( width/2, width-100);
+  a.y=  random( horizon,height );
+  a.dx=  random(1,5);
+  a.dy=  random(1,5);
+    
 }
 
 void draw() {
@@ -33,7 +35,11 @@ void scene() {
   rect( 0,horizon, width, height-horizon );
 }
 
-
+//// HANDLERS
+void keyPressed() {
+  if (key == 'q') exit();
+  if (key == 'r') reset();
+}
 
 
 
@@ -54,18 +60,16 @@ class Ball {
   }
   void move() {
     x=  x+dx;
+    if (x>width || x<0) {  dx=  -dx; }
     y=  y+dy;
+    if (y>height || y<horizon) {  dy=  -dy; }
   }
   // Detect if this Ball has hit abother Ball. 
-  boolean hit( Ball other ) {
-    if ( dist( this.x,this.y, other.x,other.y ) < 60 ) return true;
-    else return false;
-  }
 }
 
 class Bird {
   //// PROPERTIES:  position, speed, color, etc. ////   (What a Bird "has".)
-  float x,y, dx,dy;
+  float x=0,y=50, dx=5,dy=0.5;
   int r,g,b;
   int number;
   boolean wingUp=false;
@@ -83,6 +87,10 @@ class Bird {
   void move() {
     x=  x+dx;
     y=  y+dy;
+    if (x>width) {
+      x=0;
+      y=  random( 0, horizon );
+    }
   }
 }
   
